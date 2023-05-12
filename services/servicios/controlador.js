@@ -64,26 +64,15 @@
                 nombre.classList.add("text-center","fw-bold")
                 nombre.textContent=personajes.name
                 
-                let altura=document.createElement("h4")
-                altura.classList.add("text-center","fw-bold")
-                altura.textContent=personajes.height
-                
-                let peliculas=document.createElement("h4")
-                peliculas.classList.add("text-center","fw-bold")
-                peliculas.textContent=personajes.films
-
                 tarjeta.appendChild(nombre)
-                tarjeta.appendChild(altura)
                 columna.appendChild(tarjeta)
                 fila.appendChild(columna)
-                
-
-                console.log(personajes) 
                 
             })
          })
 
-         treaerPeliculas().then(function(respuesta){
+         treaerPeliculas()
+         .then(function(respuesta){
 
             console.log(respuesta)
             respuesta.results.forEach(function(peliculas){
@@ -96,8 +85,14 @@
 
                 let nombre=document.createElement("h4")
                 nombre.classList.add("text-center","fw-bold")
-                nombre.textContent=peliculas.name
+                nombre.textContent=peliculas.title
 
+                let episodio = document.createElement("div")
+                episodio.classList.add("text-center","fw-bold")
+                episodio.textContent=peliculas.episode_id
+
+                tarjeta.appendChild(nombre)
+                tarjeta.appendChild(episodio)
                 columna.appendChild(tarjeta)  
                 fila2.appendChild(columna)
             })
